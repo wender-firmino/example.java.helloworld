@@ -7,7 +7,7 @@ pipeline {
         stage('Docker Build') {
             agent any
             steps {
-                sh 'docker build -f Dockerfile -t demo/oracle-java:8'
+                sh 'docker build -f Dockerfile -t demo/oracle-java:8 .'
             }
         }
         stage('Docker Compile Java Class') {
