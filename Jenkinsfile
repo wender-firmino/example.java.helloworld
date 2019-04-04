@@ -19,7 +19,7 @@ pipeline {
         stage('Docker Execute Java Class') {
             agent any
             steps {
-                sh 'docker run --rm -v $PWD:/app -w /app demo/oracle-java:8 java Main'
+                sh 'docker run --rm -v $PWD:/app -w /app demo/oracle-java:8 java /HelloWorld/Main'
             }
         }
     }
