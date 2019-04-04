@@ -10,10 +10,17 @@ pipeline {
                 sh 'docker build -f Dockerfile -t demo/oracle-java:8 .'
             }
         }
-        stage('Docker Compile and Execute Java Class') {
+        stage('Docker Compile Class') {
             agent any
             steps {
                 sh 'cd HelloWorld && docker run --rm -v $PWD:/app -w /app demo/oracle-java:8 javac Main.java && docker run --rm -v $PWD:/app -w /app demo/oracle-java:8 java HelloWorld'
+            }
+        }
+    
+        stage('Docker Execute Java Class') {
+            agent any
+            steps {
+                sh 'docker run --rm -v $PWD:/app -w /app demo/oracle-java:8 java Main'
             }
         }
         
